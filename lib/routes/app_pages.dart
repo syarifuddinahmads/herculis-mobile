@@ -1,15 +1,28 @@
 import 'package:get/get.dart';
+import 'package:herculismobile/bindings/create_newspaper_binding.dart';
+import 'package:herculismobile/bindings/create_publisher_binding.dart';
 import 'package:herculismobile/bindings/forgot_password_binding.dart';
 import 'package:herculismobile/bindings/login_binding.dart';
 import 'package:herculismobile/bindings/main_binding.dart';
+import 'package:herculismobile/bindings/newspaper_binding.dart';
+import 'package:herculismobile/bindings/publisher_binding.dart';
 import 'package:herculismobile/bindings/register_binding.dart';
 import 'package:herculismobile/views/forgot_password_view.dart';
 import 'package:herculismobile/views/login_view.dart';
 import 'package:herculismobile/views/main_view.dart';
+import 'package:herculismobile/views/newspaper/create_newspaper_view.dart';
+import 'package:herculismobile/views/newspaper/newspaper_view.dart';
+import 'package:herculismobile/views/publisher/create_publisher_view.dart';
+import 'package:herculismobile/views/publisher/publisher_view.dart';
 import 'package:herculismobile/views/register_view.dart';
 
 class AppPages {
   static final routes = [
+    GetPage(
+      name: '/',
+      page: () => MainView(),
+      binding: MainBinding(),
+    ),
     GetPage(
       name: '/login',
       page: () => LoginView(),
@@ -26,9 +39,24 @@ class AppPages {
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
-      name: '/',
-      page: () => MainView(),
-      binding: MainBinding(),
+      name: '/publisher',
+      page: () => PublisherView(),
+      binding: PublisherBinding(),
+    ),
+    GetPage(
+      name: '/publisher/create',
+      page: () => CreatePublisherView(),
+      binding: CreatePublisherBinding(),
+    ),
+    GetPage(
+      name: '/newspaper',
+      page: () => NewspaperView(),
+      binding: NewspaperBinding(),
+    ),
+    GetPage(
+      name: '/newspaper/create',
+      page: () => CreateNewspaperView(),
+      binding: CreateNewspaperBinding(),
     ),
   ];
 }

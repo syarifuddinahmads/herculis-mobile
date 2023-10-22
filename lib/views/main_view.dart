@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:herculismobile/views/tabs/account_tab.dart';
+import 'package:herculismobile/views/tabs/home_tab.dart';
+import 'package:herculismobile/views/tabs/notification_tab.dart';
+import 'package:herculismobile/views/tabs/transaction_tab.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -8,13 +13,11 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    // Isi dengan widget halaman tab pertama
-    Text('Halaman 1'),
-    // Isi dengan widget halaman tab kedua
-    Text('Halaman 2'),
-    // Isi dengan widget halaman tab kedua
-    Text('Halaman 3'),
+  final List<Widget> _widgetOptions = <Widget>[
+    HomeTab(),
+    TransactionTab(),
+    NotificationTab(),
+    AccountTab(),
   ];
 
   void _onItemTapped(int index) {
@@ -32,24 +35,9 @@ class _MainViewState extends State<MainView> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                // Tambahkan logika ketika "Payment" dipilih
-                Navigator.pop(context);
+                Get.offNamed('/transaction');
               },
-              child: Text('Payment'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Tambahkan logika ketika "Retur" dipilih
-                Navigator.pop(context);
-              },
-              child: Text('Retur'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Tambahkan logika ketika "Order" dipilih
-                Navigator.pop(context);
-              },
-              child: Text('Order'),
+              child: Text('Transaction'),
             ),
           ],
         );
@@ -60,36 +48,33 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Tab 1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Tab 2',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Tab 3',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Tampilkan dialog pilihan
-          _showOptionsDialog();
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blue,
-      ),
-    );
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: true,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Transaksi',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: 'Notifikasi',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Akun',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.blueGrey,
+          onTap: _onItemTapped,
+        ));
   }
 }
