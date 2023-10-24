@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:herculismobile/widgets/button_widget.dart';
+import 'package:herculismobile/widgets/item_transaction_widget.dart';
+import 'package:herculismobile/widgets/search_transaction_dialog.dart';
 
 class TransactionTab extends StatelessWidget {
   @override
@@ -17,107 +20,107 @@ class TransactionList extends StatelessWidget {
       appBar: AppBar(
         title: Text('Transaksi'),
       ),
-      body: Column(children: [
-        Container(
-            width: MediaQuery.sizeOf(context).width,
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Column(children: [
-                ButtonWidget(
-                  onPressed: () {},
-                  text: "Buat Transaksi",
-                  width: MediaQuery.sizeOf(context).width,
-                  margin: EdgeInsets.all(8.0),
-                ),
-                ButtonWidget(
-                  onPressed: () {},
-                  text: "Cari Transaksi",
-                  width: MediaQuery.sizeOf(context).width,
-                  margin: EdgeInsets.all(8.0),
-                )
-              ]),
-            )),
-        Container(
-          // Mengisi tinggi sepenuhnya
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0), // Sudut bulat kiri atas
-              topRight: Radius.circular(20.0), // Sudut bulat kanan atas
+      body: Column(
+        children: <Widget>[
+          Container(
+              width: MediaQuery.sizeOf(context).width,
+              child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Column(children: [
+                  ButtonWidget(
+                    onPressed: () {
+                      Get.toNamed("transaction/create");
+                    },
+                    text: "Buat Transaksi",
+                    width: MediaQuery.sizeOf(context).width,
+                    margin: EdgeInsets.all(8.0),
+                  ),
+                  ButtonWidget(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SearchTransactionDialog(
+                            title: 'Judul Dialog',
+                            content: 'Isi dari dialog ini.',
+                            onClose: () {
+                              Navigator.of(context).pop();
+                            },
+                          );
+                        },
+                      );
+                    },
+                    text: "Cari Transaksi",
+                    width: MediaQuery.sizeOf(context).width,
+                    margin: EdgeInsets.all(8.0),
+                  )
+                ]),
+              )),
+          Expanded(
+            child: DefaultTabController(
+              length: 2,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: TabBar(
+                      labelColor: Colors.black,
+                      tabs: [
+                        Tab(
+                          text: 'Transaksi Terbaru',
+                        ),
+                        Tab(text: 'Daftar Transaksi'),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    // Tinggi kontainer untuk konten tab
+                    child: TabBarView(
+                      children: [
+                        // Konten untuk Tab 1
+                        ListView(
+                          children: [
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                          ],
+                        ),
+                        // Konten untuk Tab 2
+                        ListView(
+                          children: [
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                            ItemTransactionWidget(),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            color: Colors.blue, // Warna latar belakang
-          ),
-          child: TabBarTransactionWidget(),
-        )
-      ]),
-    );
-  }
-}
-
-class TabBarTransactionWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 1,
-      length: 1,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueGrey.shade500,
-          title: Text('TabBar Widget'),
-          bottom: TabBar(
-            indicatorColor: Colors.lime,
-            indicatorWeight: 5.0,
-            labelColor: Colors.white,
-            labelPadding: EdgeInsets.only(top: 10.0),
-            unselectedLabelColor: Colors.grey,
-            tabs: [
-              Tab(
-                text: 'Cake',
-                icon: Icon(
-                  Icons.cake,
-                  color: Colors.white,
-                ),
-                iconMargin: EdgeInsets.only(bottom: 10.0),
-              ),
-              //child: Image.asset('images/android.png'),
-
-              Tab(
-                text: 'Radio',
-                icon: Icon(
-                  Icons.radio,
-                  color: Colors.white,
-                ),
-                iconMargin: EdgeInsets.only(bottom: 10.0),
-              ),
-              Tab(
-                text: 'Gift',
-                icon: Icon(
-                  Icons.card_giftcard,
-                  color: Colors.white,
-                ),
-                iconMargin: EdgeInsets.only(bottom: 10.0),
-              ),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            Center(
-                child: Text(
-              'This is Cake Tab',
-              style: TextStyle(fontSize: 32),
-            )),
-            Center(
-                child: Text(
-              'This is Radio Tab',
-              style: TextStyle(fontSize: 32),
-            )),
-            Center(
-                child: Text(
-              'This is Gift Tab',
-              style: TextStyle(fontSize: 32),
-            )),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

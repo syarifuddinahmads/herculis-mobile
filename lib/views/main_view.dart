@@ -26,25 +26,6 @@ class _MainViewState extends State<MainView> {
     });
   }
 
-  void _showOptionsDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Pilih Aksi'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Get.offNamed('/transaction');
-              },
-              child: Text('Transaction'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
