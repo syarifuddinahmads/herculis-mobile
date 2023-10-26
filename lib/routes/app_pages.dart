@@ -19,7 +19,7 @@ import 'package:herculismobile/views/publisher/create_publisher_view.dart';
 import 'package:herculismobile/views/publisher/publisher_view.dart';
 import 'package:herculismobile/views/register_view.dart';
 import 'package:herculismobile/views/transaction/create_transaction.dart';
-import 'package:herculismobile/views/transaction/transaction_detail.dart';
+import 'package:herculismobile/views/transaction/detail_transaction.dart';
 
 class AppPages {
   static final routes = [
@@ -70,8 +70,8 @@ class AppPages {
     ),
     GetPage(
       name: '/transaction/detail',
-      page: () => TransactionDetailView(),
-      binding: TransactionDetailBinding(),
+      page: () => DetailTransactionView(),
+      binding: DetailTransactionBinding(),
     ),
   ];
 }

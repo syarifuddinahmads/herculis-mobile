@@ -33,7 +33,7 @@ class _QuantityCounterState extends State<QuantityCounter> {
         ),
         Text(
           quantity.toString(),
-          style: TextStyle(fontSize: 24.0),
+          style: TextStyle(fontSize: 18.0),
         ),
         IconButton(
           icon: Icon(Icons.add),

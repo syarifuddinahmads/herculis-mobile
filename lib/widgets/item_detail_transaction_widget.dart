@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ItemTransactionWidget extends StatelessWidget {
-  final String transactionNumber;
+class ItemDetailTransactionWidget extends StatelessWidget {
+  final String name;
   final String amount;
-  final String description;
+  final String quantity;
   final VoidCallback onTap;
 
-  const ItemTransactionWidget({
+  const ItemDetailTransactionWidget({
     super.key,
-    required this.transactionNumber,
+    required this.name,
     required this.amount,
-    required this.description,
+    required this.quantity,
     required this.onTap, // Tambahkan properti onTap
   });
 
@@ -25,19 +25,17 @@ class ItemTransactionWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(transactionNumber),
-                  Text(
-                    amount,
-                    textAlign: TextAlign.end,
-                  ),
-                ],
+              Text(name),
+              Text(
+                'x ' + quantity,
+                textAlign: TextAlign.end,
               ),
-              Text(description),
+              Text(
+                amount,
+                textAlign: TextAlign.end,
+              ),
             ],
           ),
         ),

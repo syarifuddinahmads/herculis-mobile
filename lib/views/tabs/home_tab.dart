@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:herculismobile/widgets/textfield_widget.dart';
 
 class HomeTab extends StatelessWidget {
   @override
@@ -9,7 +10,9 @@ class HomeTab extends StatelessWidget {
         ),
         body: ListView(
           scrollDirection: Axis.vertical,
-          children: <Widget>[ChartSalesCard()],
+          children: <Widget>[
+            ChartSalesCard(),
+          ],
         ));
   }
 }

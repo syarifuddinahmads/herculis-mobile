@@ -1,11 +1,11 @@
 // bindings/sample_binding.dart
 
 import 'package:get/get.dart';
-import 'package:herculismobile/controllers/transaction_detail_controller.dart';
+import 'package:herculismobile/controllers/detail_transaction_controller.dart';
 
-class TransactionDetailBinding extends Bindings {
+class DetailTransactionBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => TransactionDetailController());
+    Get.lazyPut(() => DetailTransactionController());
   }
 }

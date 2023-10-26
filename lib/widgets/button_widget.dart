@@ -8,15 +8,21 @@ class ButtonWidget extends StatelessWidget {
   final double? width;
   final double height;
   final EdgeInsetsGeometry? margin;
+  final IconData? icon;
+  final bool iconOnLeft;
 
-  ButtonWidget(
-      {required this.onPressed,
-      required this.text,
-      this.buttonColor = Colors.blue,
-      this.textColor = Colors.white,
-      this.width,
-      this.height = 50,
-      this.margin});
+  const ButtonWidget({
+    Key? key,
+    required this.onPressed,
+    required this.text,
+    this.buttonColor = Colors.blue,
+    this.textColor = Colors.white,
+    this.width,
+    this.height = 50,
+    this.margin,
+    this.icon,
+    this.iconOnLeft = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +36,19 @@ class ButtonWidget extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             primary: buttonColor,
             onPrimary: textColor,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: EdgeInsets.all(10),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
-          child: Text(text),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (icon != null && iconOnLeft) Icon(icon),
+              Text(text),
+              if (icon != null && !iconOnLeft) Icon(icon),
+            ],
+          ),
         ),
       ),
     );

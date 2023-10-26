@@ -1,19 +1,99 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:herculismobile/widgets/button_widget.dart';
 import 'package:herculismobile/widgets/item_transaction_widget.dart';
+import 'package:herculismobile/widgets/list_transaction.dart';
 import 'package:herculismobile/widgets/search_transaction_dialog.dart';
 
 class TransactionTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TransactionList();
+    return TransactionTabView();
   }
 }
 
-class TransactionList extends StatelessWidget {
+class TransactionTabView extends StatelessWidget {
+  final List<Map<String, String>> newTransactions = [
+    {
+      'number': 'TR/000001',
+      'amount': 'Rp. 250.000,00',
+      'description': 'Order Kuota - Jawa Pos Indonesia'
+    },
+    {
+      'number': 'TR/000002',
+      'amount': 'Rp. 150.000,00',
+      'description': 'Pembayaran Listrik'
+    },
+    {
+      'number': 'TR/000003',
+      'amount': 'Rp. 500.000,00',
+      'description': 'Belanja Online'
+    },
+  ];
+
+  final List<Map<String, String>> listTransactions = [
+    {
+      'number': 'TR/000001',
+      'amount': 'Rp. 250.000,00',
+      'description': 'Order Kuota - Jawa Pos Indonesia'
+    },
+    {
+      'number': 'TR/000002',
+      'amount': 'Rp. 150.000,00',
+      'description': 'Pembayaran Listrik'
+    },
+    {
+      'number': 'TR/000003',
+      'amount': 'Rp. 500.000,00',
+      'description': 'Belanja Online'
+    },
+    {
+      'number': 'TR/000001',
+      'amount': 'Rp. 250.000,00',
+      'description': 'Order Kuota - Jawa Pos Indonesia'
+    },
+    {
+      'number': 'TR/000002',
+      'amount': 'Rp. 150.000,00',
+      'description': 'Pembayaran Listrik'
+    },
+    {
+      'number': 'TR/000003',
+      'amount': 'Rp. 500.000,00',
+      'description': 'Belanja Online'
+    },
+    {
+      'number': 'TR/000001',
+      'amount': 'Rp. 250.000,00',
+      'description': 'Order Kuota - Jawa Pos Indonesia'
+    },
+    {
+      'number': 'TR/000002',
+      'amount': 'Rp. 150.000,00',
+      'description': 'Pembayaran Listrik'
+    },
+    {
+      'number': 'TR/000003',
+      'amount': 'Rp. 500.000,00',
+      'description': 'Belanja Online'
+    },
+    {
+      'number': 'TR/000001',
+      'amount': 'Rp. 250.000,00',
+      'description': 'Order Kuota - Jawa Pos Indonesia'
+    },
+    {
+      'number': 'TR/000002',
+      'amount': 'Rp. 150.000,00',
+      'description': 'Pembayaran Listrik'
+    },
+    {
+      'number': 'TR/000003',
+      'amount': 'Rp. 500.000,00',
+      'description': 'Belanja Online'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +114,7 @@ class TransactionList extends StatelessWidget {
                     text: "Buat Transaksi",
                     width: MediaQuery.sizeOf(context).width,
                     margin: EdgeInsets.all(8.0),
+                    icon: Icons.add,
                   ),
                   ButtonWidget(
                     onPressed: () {
@@ -53,6 +134,7 @@ class TransactionList extends StatelessWidget {
                     text: "Cari Transaksi",
                     width: MediaQuery.sizeOf(context).width,
                     margin: EdgeInsets.all(8.0),
+                    icon: Icons.search,
                   )
                 ]),
               )),
@@ -62,7 +144,7 @@ class TransactionList extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                    child: TabBar(
+                    child: const TabBar(
                       labelColor: Colors.black,
                       tabs: [
                         Tab(
@@ -77,42 +159,9 @@ class TransactionList extends StatelessWidget {
                     child: TabBarView(
                       children: [
                         // Konten untuk Tab 1
-                        ListView(
-                          children: [
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                          ],
-                        ),
+                        TransactionList(transactions: newTransactions),
                         // Konten untuk Tab 2
-                        ListView(
-                          children: [
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                            ItemTransactionWidget(),
-                          ],
-                        ),
+                        TransactionList(transactions: listTransactions),
                       ],
                     ),
                   ),
