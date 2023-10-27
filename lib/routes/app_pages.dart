@@ -8,16 +8,17 @@ import 'package:herculismobile/bindings/main_binding.dart';
 import 'package:herculismobile/bindings/newspaper_binding.dart';
 import 'package:herculismobile/bindings/publisher_binding.dart';
 import 'package:herculismobile/bindings/register_binding.dart';
-import 'package:herculismobile/bindings/transaction_binding.dart';
+import 'package:herculismobile/bindings/submit_payment_binding.dart';
 import 'package:herculismobile/bindings/transaction_detail_binding.dart';
-import 'package:herculismobile/views/forgot_password_view.dart';
-import 'package:herculismobile/views/login_view.dart';
+import 'package:herculismobile/views/auth/forgot_password_view.dart';
+import 'package:herculismobile/views/auth/login_view.dart';
+import 'package:herculismobile/views/auth/register_view.dart';
 import 'package:herculismobile/views/main_view.dart';
 import 'package:herculismobile/views/newspaper/create_newspaper_view.dart';
 import 'package:herculismobile/views/newspaper/newspaper_view.dart';
+import 'package:herculismobile/views/payment/submit_payment.dart';
 import 'package:herculismobile/views/publisher/create_publisher_view.dart';
 import 'package:herculismobile/views/publisher/publisher_view.dart';
-import 'package:herculismobile/views/register_view.dart';
 import 'package:herculismobile/views/transaction/create_transaction.dart';
 import 'package:herculismobile/views/transaction/detail_transaction.dart';
 
@@ -72,6 +73,11 @@ class AppPages {
       name: '/transaction/detail',
       page: () => DetailTransactionView(),
       binding: DetailTransactionBinding(),
+    ),
+    GetPage(
+      name: '/submit-payment',
+      page: () => SubmitPaymentView(),
+      binding: SubmitPaymentBinding(),
     ),
   ];
 }

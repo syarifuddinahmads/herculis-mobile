@@ -4,7 +4,8 @@ import 'package:herculismobile/widgets/item_detail_transaction_widget.dart';
 class DetailTransactionList extends StatelessWidget {
   final List<Map<String, String>> transactions; // Data transaksi
 
-  DetailTransactionList({
+  const DetailTransactionList({
+    super.key,
     required this.transactions,
   });
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:herculismobile/widgets/button_widget.dart';
 import 'package:herculismobile/widgets/list_detail_transaction.dart';
 
@@ -104,7 +105,9 @@ class DetailTransactionView extends StatelessWidget {
                   ButtonWidget(
                     icon: Icons.payment,
                     buttonColor: Colors.green,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed('submit-payment');
+                    },
                     text: "Pembayaran",
                     width: MediaQuery.sizeOf(context).width / 2.7,
                   ),

@@ -7,7 +7,7 @@ import 'package:herculismobile/widgets/textfield_widget.dart';
 class CreateTransactionView extends StatelessWidget {
   String? _selectedOption;
 
-  List<DropdownMenuItem<String>> _dropdownItems = [
+  static const List<DropdownMenuItem<String>> _dropdownItems = [
     DropdownMenuItem(value: 'Option 1', child: Text('Option 1')),
     DropdownMenuItem(value: 'Option 2', child: Text('Option 2')),
     DropdownMenuItem(value: 'Option 3', child: Text('Option 3')),
@@ -17,14 +17,14 @@ class CreateTransactionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buat Transaksi'),
+        title: const Text('Buat Transaksi'),
       ),
       body: Column(
         children: <Widget>[
           Container(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(12.0),
               child: DropdownWidget(
                 dropdownItems: _dropdownItems,
                 selectedValue: _selectedOption,
@@ -45,11 +45,11 @@ class CreateTransactionView extends StatelessWidget {
         height: 190,
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Total"),
