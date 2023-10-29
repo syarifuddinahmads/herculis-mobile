@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:herculismobile/bindings/create_newspaper_binding.dart';
 import 'package:herculismobile/bindings/create_publisher_binding.dart';
 import 'package:herculismobile/bindings/create_transaction_binding.dart';
+import 'package:herculismobile/bindings/edit_account_binding.dart';
 import 'package:herculismobile/bindings/forgot_password_binding.dart';
 import 'package:herculismobile/bindings/login_binding.dart';
 import 'package:herculismobile/bindings/main_binding.dart';
@@ -10,6 +11,7 @@ import 'package:herculismobile/bindings/publisher_binding.dart';
 import 'package:herculismobile/bindings/register_binding.dart';
 import 'package:herculismobile/bindings/submit_payment_binding.dart';
 import 'package:herculismobile/bindings/transaction_detail_binding.dart';
+import 'package:herculismobile/views/account/edit_account.dart';
 import 'package:herculismobile/views/auth/forgot_password_view.dart';
 import 'package:herculismobile/views/auth/login_view.dart';
 import 'package:herculismobile/views/auth/register_view.dart';
@@ -79,5 +81,9 @@ class AppPages {
       page: () => SubmitPaymentView(),
       binding: SubmitPaymentBinding(),
     ),
+    GetPage(
+        name: '/edit-account',
+        page: () => EditAccountView(),
+        binding: EditAccountBinding())
   ];
 }
