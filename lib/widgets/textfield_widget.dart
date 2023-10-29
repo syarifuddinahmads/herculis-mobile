@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final String labelText;
@@ -7,7 +8,7 @@ class TextFieldWidget extends StatefulWidget {
   final bool obscureText;
   final int maxLines;
 
-  TextFieldWidget({
+  const TextFieldWidget({
     Key? key,
     required this.labelText,
     required this.controller,

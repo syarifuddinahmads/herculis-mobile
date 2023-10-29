@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:herculismobile/widgets/button_widget.dart';
-import 'package:herculismobile/widgets/item_transaction_widget.dart';
+import 'package:herculismobile/widgets/date_input_field_widget.dart';
+import 'package:herculismobile/widgets/dropdown_input_field_widget.dart';
 import 'package:herculismobile/widgets/list_transaction.dart';
 import 'package:herculismobile/widgets/search_transaction_dialog.dart';
 
@@ -94,6 +95,20 @@ class TransactionTabView extends StatelessWidget {
     },
   ];
 
+  String _selectedTypeTransaction = '';
+  String _selectedStatusTransaction = '';
+
+  static const List<String> _dropdownTypeTransaction = [
+    'Order Kuota',
+    'Retur Kuota',
+    'Sales',
+  ];
+
+  static const List<String> _dropdownStatusTransaction = [
+    'Sudah Dibayar',
+    'Belum Dibayar'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,11 +137,49 @@ class TransactionTabView extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return SearchTransactionDialog(
-                            title: 'Judul Dialog',
-                            content: 'Isi dari dialog ini.',
+                            title: 'Cari Transaksi',
                             onClose: () {
                               Navigator.of(context).pop();
                             },
+                            action: [],
+                            content: Container(
+                              height: 310,
+                              child: Column(children: [
+                                DateInputFieldWidget(
+                                  labelTextField: "Tanggal Awal",
+                                  dateController: TextEditingController(),
+                                  selectedDate: DateTime.now(),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                DateInputFieldWidget(
+                                  labelTextField: "Tanggal Akhir",
+                                  dateController: TextEditingController(),
+                                  selectedDate: DateTime.now(),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                DropdownInputFieldWidget(
+                                    controller: TextEditingController(),
+                                    labelTextField: 'Type Transaksi',
+                                    options: _dropdownTypeTransaction,
+                                    selectedOption: _selectedTypeTransaction),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                DropdownInputFieldWidget(
+                                    controller: TextEditingController(),
+                                    labelTextField: 'Status Transaksi',
+                                    options: _dropdownStatusTransaction,
+                                    selectedOption: _selectedStatusTransaction),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                ButtonWidget(onPressed: () {}, text: 'Submit')
+                              ]),
+                            ),
                           );
                         },
                       );

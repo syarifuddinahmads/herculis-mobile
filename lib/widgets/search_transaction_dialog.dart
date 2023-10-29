@@ -2,25 +2,23 @@ import 'package:flutter/material.dart';
 
 class SearchTransactionDialog extends StatelessWidget {
   final String title;
-  final String content;
   final Function onClose;
+  final Widget content;
+  final List<Widget> action;
 
-  SearchTransactionDialog(
-      {required this.title, required this.content, required this.onClose});
+  const SearchTransactionDialog(
+      {super.key,
+      required this.title,
+      required this.content,
+      required this.onClose,
+      required this.action});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(title),
-      content: Text(content),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text('Tutup'),
-        ),
-      ],
+      content: content,
+      actions: action,
     );
   }
 }

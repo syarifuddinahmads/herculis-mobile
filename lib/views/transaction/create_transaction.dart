@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:herculismobile/widgets/button_widget.dart';
-import 'package:herculismobile/widgets/dropdown_widget.dart';
+import 'package:herculismobile/widgets/dropdown_input_field_widget.dart';
 import 'package:herculismobile/widgets/item_create_transaction_widget.dart';
 import 'package:herculismobile/widgets/textfield_widget.dart';
 
 class CreateTransactionView extends StatelessWidget {
-  String? _selectedOption;
+  String _selectedOption = '';
 
-  static const List<DropdownMenuItem<String>> _dropdownItems = [
-    DropdownMenuItem(value: 'Option 1', child: Text('Option 1')),
-    DropdownMenuItem(value: 'Option 2', child: Text('Option 2')),
-    DropdownMenuItem(value: 'Option 3', child: Text('Option 3')),
-  ];
+  static const List<String> _dropdownItems = ["Jawa Pos", "Tempo"];
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +21,11 @@ class CreateTransactionView extends StatelessWidget {
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: DropdownWidget(
-                dropdownItems: _dropdownItems,
-                selectedValue: _selectedOption,
+              child: DropdownInputFieldWidget(
+                controller: TextEditingController(),
+                labelTextField: 'Pilih Publisher',
+                options: _dropdownItems,
+                selectedOption: _selectedOption,
               ),
             ),
           ),
